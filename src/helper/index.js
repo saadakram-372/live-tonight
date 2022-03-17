@@ -8,8 +8,7 @@ export const bandsInTown = async (payload) => {
     {
       method: "GET",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
       },
     }
   );
