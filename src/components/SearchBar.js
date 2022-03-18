@@ -45,19 +45,47 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchBar({ searchInput, setSearchInput }) {
+export default function SearchBar({
+  searchInput,
+  setSearchInput,
+  setArtistName,
+  setLoading,
+}) {
   return (
-    <Search>
-      <SearchIconWrapper>
-        <SearchIcon />
-      </SearchIconWrapper>
-      <StyledInputBase
-        name="search-text"
-        placeholder="Change location"
-        inputProps={{ "aria-label": "search" }}
-        value={searchInput}
-        onChange={(e) => setSearchInput(e.target.value)}
-      />
-    </Search>
+    <div
+      style={{
+        flexDirection: "row",
+        display: "flex",
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
+      <Search>
+        <StyledInputBase
+          name="search-text"
+          placeholder="Search artist/band..."
+          inputProps={{ "aria-label": "search" }}
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+      </Search>
+
+      <button
+        onClick={() => {
+          if (searchInput === " ") {
+            alert("Please enter a name of band/artist");
+          } else {
+            setLoading(true);
+            setArtistName(searchInput);
+          }
+        }}
+        style={{ width: "20%", height: 40, marginLeft: -20 }}
+        color="#000"
+      >
+        Search
+      </button>
+    </div>
   );
 }

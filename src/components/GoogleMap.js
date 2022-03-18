@@ -4,12 +4,12 @@ import GoogleMapReact from "google-map-react";
 
 const APPI_KEY = "AIzaSyCUuk6mQyMlLnU73UhMC8TWCtZ_rTHMvFg";
 
-const GoogleMap = () => {
+const GoogleMap = ({ bandsData }) => {
   const [currentLocation, setCurrentLocation] = useState({
     lat: null,
     lng: null,
   });
-  const ZOOM = 13;
+  const ZOOM = 8;
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -19,6 +19,10 @@ const GoogleMap = () => {
       });
     });
   }, []);
+
+  // useEffect(()=>{
+
+  // },[])
 
   const Marker = (props) => {
     const { color, name, image } = props;
@@ -30,15 +34,15 @@ const GoogleMap = () => {
       >
         <img
           src={image}
-          className="YOUR-CLASS-NAME"
-          style={{ height: 40, width: 40 }}
+          className="Concert"
+          style={{ height: 70, width: 70 }}
         />
       </div>
     );
   };
 
   return (
-    <div style={{ height: "100vh", width: "60%" }}>
+    <div style={{ height: "100vh", width: "70%" }}>
       {currentLocation.lat !== null && currentLocation.lng !== null ? (
         <GoogleMapReact
           bootstrapURLKeys={{ key: APPI_KEY }}
@@ -49,8 +53,18 @@ const GoogleMap = () => {
             lat={currentLocation.lat}
             lng={currentLocation.lng}
             name="My Marker"
-            image={require("../assets/marker.png")}
+            image={require("../assets/current_marker.png")}
           />
+          {bandsData.map((val) => {
+            return (
+              <Marker
+                lat={val.venue.latitude}
+                lng={val.venue.longitude}
+                name="My Marker"
+                image={require("../assets/marker.png")}
+              />
+            );
+          })}
         </GoogleMapReact>
       ) : null}
     </div>
