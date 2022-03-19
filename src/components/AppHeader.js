@@ -6,12 +6,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-// Core components
-import SearchBar from "./SearchBar";
-
 export default function AppHeader(props) {
-  const { searchInput, setSearchInput } = props;
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -24,12 +19,6 @@ export default function AppHeader(props) {
           >
             Live Tonight
           </Typography>
-
-          {/* Search bar at top right corner */}
-          {/* <SearchBar
-            searchInput={searchInput}
-            setSearchInput={setSearchInput}
-          /> */}
         </Toolbar>
       </AppBar>
     </Box>

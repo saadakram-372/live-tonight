@@ -29,7 +29,7 @@ export default function BandsInTown(props) {
   }, [bandsData]);
 
   return (
-    <div style={{ height: "60vh", width: "30%", backgroundColor: "#808080" }}>
+    <div style={{ height: "100%" }}>
       <div style={{ height: "15%" }}>
         {/* Search Bar */}
         <SearchBar

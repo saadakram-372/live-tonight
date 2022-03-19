@@ -10,6 +10,7 @@ import BandsInTown from "./components/BandsInTown";
 // Helper function
 import { bandsInTown } from "./helper";
 import moment from "moment";
+import SpotifyApi from "./components/SpotifyApi";
 
 function App() {
   // States
@@ -37,20 +38,57 @@ function App() {
       {/* Header */}
       <AppHeader />
 
-      <div style={{ flexDirection: "row", display: "flex" }}>
-        {/* Map */}
-        <GoogleMap bandsData={bandsData} />
+      <div
+        style={{
+          height: "100vh",
+          width: "100%",
+          flexDirection: "row",
+          display: "flex",
+          overflow: "hidden",
+        }}
+      >
+        <div style={{ height: "100vh", width: "60%" }}>
+          {/* Map */}
+          <GoogleMap bandsData={bandsData} />
+        </div>
 
         {/* Bands in town container */}
-        <BandsInTown
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-          setArtistName={setArtistName}
-          bandsData={bandsData}
-          CURR_DATE={CURR_DATE}
-          loading={loading}
-          setLoading={setLoading}
-        />
+        <div
+          style={{
+            flexDirection: "column",
+            width: "40%",
+            height: "100%",
+            backgroundColor: "#808080",
+          }}
+        >
+          <div
+            style={{
+              height: "50vh",
+              width: "100%",
+              backgroundColor: "rgba(0,0,0,0.5)",
+            }}
+          >
+            <BandsInTown
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
+              setArtistName={setArtistName}
+              bandsData={bandsData}
+              CURR_DATE={CURR_DATE}
+              loading={loading}
+              setLoading={setLoading}
+            />
+          </div>
+
+          <div
+            style={{
+              height: "50vh",
+              width: "100%",
+              backgroundColor: "#808080",
+            }}
+          >
+            <SpotifyApi artistName={artistName} />
+          </div>
+        </div>
       </div>
     </div>
   );
