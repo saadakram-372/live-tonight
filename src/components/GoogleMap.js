@@ -21,9 +21,10 @@ const GoogleMap = ({ bandsData }) => {
   }, []);
 
   const Marker = (props) => {
-    const { color, name, image } = props;
+    const { color, name, image, key } = props;
     return (
       <div
+        key={key}
         className="marker"
         style={{ backgroundColor: color, cursor: "pointer" }}
         title={name}
@@ -55,6 +56,7 @@ const GoogleMap = ({ bandsData }) => {
             {bandsData.map((val, index) => {
               return (
                 <Marker
+                  key={index}
                   lat={val.venue.latitude}
                   lng={val.venue.longitude}
                   name={val.lineup[0]}
