@@ -56,8 +56,8 @@ function App() {
         <div
           style={{
             flexDirection: "column",
-            width: "40%",
             height: "100%",
+            width: "40%",
             backgroundColor: "#808080",
           }}
         >

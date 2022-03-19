@@ -9,7 +9,7 @@ const GoogleMap = ({ bandsData }) => {
     lat: null,
     lng: null,
   });
-  const ZOOM = 10;
+  const ZOOM = 12;
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -40,28 +40,30 @@ const GoogleMap = ({ bandsData }) => {
   return (
     <div>
       {currentLocation.lat !== null && currentLocation.lng !== null ? (
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: APPI_KEY }}
-          defaultCenter={currentLocation}
-          defaultZoom={ZOOM}
-        >
-          <Marker
-            lat={currentLocation.lat}
-            lng={currentLocation.lng}
-            name="My Marker"
-            image={require("../assets/current_marker.png")}
-          />
-          {bandsData.map((val, index) => {
-            return (
-              <Marker
-                lat={val.venue.latitude}
-                lng={val.venue.longitude}
-                name={val.lineup[0]}
-                image={require("../assets/marker.png")}
-              />
-            );
-          })}
-        </GoogleMapReact>
+        <>
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: APPI_KEY }}
+            defaultCenter={currentLocation}
+            defaultZoom={ZOOM}
+          >
+            <Marker
+              lat={currentLocation.lat}
+              lng={currentLocation.lng}
+              name="My Marker"
+              image={require("../assets/current_marker.png")}
+            />
+            {bandsData.map((val, index) => {
+              return (
+                <Marker
+                  lat={val.venue.latitude}
+                  lng={val.venue.longitude}
+                  name={val.lineup[0]}
+                  image={require("../assets/marker.png")}
+                />
+              );
+            })}
+          </GoogleMapReact>
+        </>
       ) : null}
     </div>
   );
