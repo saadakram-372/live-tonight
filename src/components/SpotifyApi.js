@@ -41,7 +41,12 @@ const SpotifyApi = ({ artistName }) => {
 
   // UseEffect to get the album of the artist searched
   useEffect(async () => {
-    if (artistName !== " " && artistName.length !== 0) {
+    if (
+      artistName !== " " &&
+      artistName.length !== 0 &&
+      spotifyToken !== null &&
+      spotifyToken.length !== 0
+    ) {
       const { data } = await axios.get(`https://api.spotify.com/v1/search`, {
         headers: {
           Authorization: `Bearer ${spotifyToken}`,
@@ -57,10 +62,9 @@ const SpotifyApi = ({ artistName }) => {
 
   // Function to render the list of albums of an artist
   const renderAlbums = () => {
-    return albums.map((album) => (
-      <>
+    return albums.map((album, index) => (
+      <div key={index}>
         <div
-          key={album.id}
           style={{
             overflow: "scroll",
             flexDirection: "row",
@@ -145,7 +149,7 @@ const SpotifyApi = ({ artistName }) => {
           </div>
         </div>
         <Divider />
-      </>
+      </div>
     ));
   };
   return (

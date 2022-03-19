@@ -23,7 +23,7 @@ function App() {
   const CURR_DATE = moment().format("YYYY-MM-DD");
 
   useEffect(() => {
-    if (artistName !== " ") {
+    if (artistName !== " " && artistName.length !== 0) {
       bandsInTown({ input: artistName }).then((value) => {
         setLoading(false);
         setBandsData(

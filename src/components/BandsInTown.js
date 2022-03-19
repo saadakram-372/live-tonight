@@ -53,7 +53,7 @@ export default function BandsInTown(props) {
         <div style={{ paddingLeft: 32, paddingRight: 32 }}>
           {bandsData.map((item, index) => {
             return bandsData.length > 0 ? (
-              <>
+              <div key={index}>
                 <div
                   style={{
                     alignItems: "center",
@@ -125,7 +125,7 @@ export default function BandsInTown(props) {
                   </div>
                 </div>
                 <Divider />
-              </>
+              </div>
             ) : (
               bandsData.length ===
                 0(

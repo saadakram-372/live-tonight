@@ -41,7 +41,15 @@ const GoogleMap = ({ bandsData }) => {
   return (
     <div>
       {currentLocation.lat !== null && currentLocation.lng !== null ? (
-        <>
+        <div
+          style={{
+            width: "60%",
+            height: "100%",
+            margin: "0",
+            padding: "0",
+            position: "absolute",
+          }}
+        >
           <GoogleMapReact
             bootstrapURLKeys={{ key: APPI_KEY }}
             defaultCenter={currentLocation}
@@ -65,7 +73,7 @@ const GoogleMap = ({ bandsData }) => {
               );
             })}
           </GoogleMapReact>
-        </>
+        </div>
       ) : null}
     </div>
   );
