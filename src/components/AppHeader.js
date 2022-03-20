@@ -29,7 +29,7 @@ export default function AppHeader(props) {
             component="div"
             sx={{ flexGrow: 1, textAlign: "left", fontFamily: "desyrel" }}
           >
-            Live Tonight
+            Live Tonight!
           </Typography>
         </Toolbar>
       </AppBar>
